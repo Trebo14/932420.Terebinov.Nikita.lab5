@@ -122,8 +122,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (savedPlaylist) {
         try {
-            playlistData = JSON.parse(savedPlaylist);
-        } 
+            const parsedData = JSON.parse(savedPlaylist);
+            if (Array.isArray(parsedData)) {
+                playlistData = parsedData;
+            } 
+            else {
+                console.warn("Данные в localStorage не являются массивом. Сброс.");
+                playlistData = [];
+            }
+        }
         catch (error) {
             console.error("Ошибка чтения данных плейлиста:", error);
             playlistData = [];
@@ -148,6 +155,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 track.favorite = checkbox.checked;
                 savePlaylistToStorage();
             });
+
+            const favoriteLabel = document.createElement("label");
+            favoriteLabel.className = "favorite-label";
+            favoriteLabel.appendChild(checkbox);
+            favoriteLabel.appendChild(document.createTextNode(" Избранное"));
             const deleteBtn = document.createElement("button");
             deleteBtn.textContent = "Удалить";
             deleteBtn.addEventListener("click", () => {
@@ -155,8 +167,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 savePlaylistToStorage();
                 renderPlaylist();
             });
+
             li.appendChild(span);
-            li.appendChild(checkbox);
+            li.appendChild(favoriteLabel);
             li.appendChild(deleteBtn);
             playlistContainer.appendChild(li);
         });
@@ -178,7 +191,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         savePlaylistToStorage();
         renderPlaylist();
-        trackForm.reset();
+        formInputs.forEach(input => {
+            input.value = "";
+        });
     });
 
     clearBtn.addEventListener("click", () => {

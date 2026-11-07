@@ -6,6 +6,7 @@
     --accent-tr-15:#a878ff26;
     --card-bg:#ffffff0d;
     --visited:#a070f0;
+    --danger-color: #FF2E2E;
 }
 
 *,
@@ -381,6 +382,7 @@ body.light-theme {
     --accent-tr-20: #6a1b9a33;
     --accent-tr-15: #6a1b9a26;
     --visited: #4a148c;
+    --danger-color: #EB0000; 
 }
 
 .hidden {
@@ -410,8 +412,17 @@ body.light-theme {
 }
 
 .track-item button {
-    background-color: #ff4d4d;
+    background-color: var(--danger-color);
     color: white;
     padding: 5px 10px;
     font-size: 0.9rem;
+}
+
+.favorite-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    user-select: none;
 }
