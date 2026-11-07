@@ -373,7 +373,6 @@ img {
     }
 }
 
-/* НОВЫЙ КОД: Светлая тема */
 body.light-theme {
     --main-color: #f4f4f9;
     --text-color: #222222;

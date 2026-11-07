@@ -63,3 +63,32 @@ if (maxVol >= 105) {
     console.log("Такая громкость может повредить слух – используйте наушники с ограничением");
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    const themeBtn = document.getElementById("theme-btn");
+    const hideBtn = document.querySelector("#hide-btn");
+    const playlistSection = document.querySelector("#playlist-section");
+    const formInputs = document.querySelectorAll("#track-form input");
+
+    if (!themeBtn || !hideBtn || !playlistSection || formInputs.length === 0) {
+        console.error("Критическая ошибка: Не найдены необходимые элементы DOM на странице!");
+        return;
+    }
+
+    const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "light") {
+        document.body.classList.add("light-theme");
+    }
+
+    themeBtn.addEventListener("click", () => {
+        document.body.classList.toggle("light-theme");
+        if (document.body.classList.contains("light-theme")) {
+            localStorage.setItem("theme", "light");
+        } else {
+            localStorage.setItem("theme", "dark");
+        }
+    });
+
+    hideBtn.addEventListener("click", () => {
+        playlistSection.classList.toggle("hidden");
+    });
+});
