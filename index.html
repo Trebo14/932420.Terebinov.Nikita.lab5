@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Музыкант и звукорежиссёр о себе</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <span class="rec-badge">REC</span>
+        <h1>Теребинов Никита</h1>
+        <p>Музыкант и звукорежиссёр</p>
+        
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#skills">Навыки</a></li>
+                <li><a href="#releases">Релизы</a></li>
+                <li><a href="#equipment">Оборудование</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </nav> 
+    </header>
+
+    <main>
+
+        <section id="skills">
+            <h2>Навыки:</h2>
+            <ul id="skills-list">
+                <li>Игра на гитаре и укулеле</li>
+                <li>Работа в FL Studio</li>
+                <li>Сведение и мастеринг треков</li>
+                <li>Запись вокала и живых инструментов</li>
+            </ul>
+        </section>
+
+        <section id="releases">
+            <h2>Мои релизы:</h2>
+            <div class="releases-container">
+                <article class="release-card">
+                    <img src="images/gd.jpg" alt="Обложка ремикса Geometry Dash" class="release-cover">
+                    <h3 class="release-title">Geometry Dash</h3>
+                    <p class="release-type">Ремикс (Remix)</p>
+                    <p class="release-genre">Жанр: Электроника</p>
+                    <p class="release-year">Год: <time datetime="2023">2023</time></p>
+                </article>
+
+                <article class="release-card">
+                    <img src="images/sg.jpg" alt="Обложка саундтрека к игре" class="release-cover">
+                    <h3 class="release-title">Саундтрек к игре</h3>
+                    <p class="release-type">Саундтрек (Soundtrack)</p>
+                    <p class="release-genre">Жанр: Дабстеп</p>
+                    <p class="release-year">Год: <time datetime="2024">2024</time></p>
+                </article>
+
+                <article class="release-card">
+                    <img src="images/pc.jpg" alt="Обложка сингла Personal" class="release-cover">
+                    <h3 class="release-title">Personal</h3>
+                    <p class="release-type">Кавер (Cover)</p>
+                    <p class="release-genre">Жанр: Металкор</p>
+                    <p class="release-year">Год: <time datetime="2025">2025</time></p>
+                </article>
+
+                <article class="release-card">
+                    <img src="images/izt.jpg" alt="Обложка сингла Я забираю телефон" class="release-cover">
+                    <h3 class="release-title">Я забираю телефон</h3>
+                    <p class="release-type">Сингл (Single)</p>
+                    <p class="release-genre">Жанр: Поп</p>
+                    <p class="release-year">Год: <time datetime="2026">2026</time></p>
+                </article>
+            </div>
+        </section>
+
+        <section id="equipment">
+            <h2>Студийное оборудование:</h2>
+            <div class="equipment-grid">
+                <figure class="equipment-card">
+                    <img src="images/micro.jpg" alt="Микрофон" class="equipment-img">
+                    <figcaption>
+                        <h3>Микрофон</h3>
+                        <p>Запись вокала</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="equipment-card">
+                    <img src="images/ai.jpg" alt="Аудиоинтерфейс" class="equipment-img">
+                    <figcaption>
+                        <h3>Аудиоинтерфейс</h3>
+                        <p>Оцифровка звука</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="equipment-card">
+                    <img src="images/smon.jpg" alt="Студийные мониторы" class="equipment-img">
+                    <figcaption>
+                        <h3>Мониторы</h3>
+                        <p>Сведение и мастеринг</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="equipment-card">
+                    <img src="images/k.jpg" alt="MIDI-клавиатура" class="equipment-img">
+                    <figcaption>
+                        <h3>MIDI-клавиатура</h3>
+                        <p>Создание аранжировок</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="equipment-card">
+                    <img src="images/hp.jpg" alt="Наушники" class="equipment-img">
+                    <figcaption>
+                        <h3>Наушники</h3>
+                        <p>Детальный контроль</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="equipment-card">
+                    <img src="images/gr.jpg" alt="Гитара" class="equipment-img">
+                    <figcaption>
+                        <h3>Гитара</h3>
+                        <p>Запись партий</p>
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Заполните форму, чтобы связаться со мной:</h2>
+            <form action="#" method="post" class="contact-form">
+
+                <label for="name">Имя:
+                    <input type="text" id="name" name="name" placeholder="ваше имя" required>
+                </label>
+
+                <label for="email">Email:
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </label>
+
+                <label for="message">Сообщение:
+                    <textarea id="message" name="message" rows="5" placeholder="напишите, что вам нужно..." required></textarea>
+                </label>
+
+                <button type="submit">отправить</button>
+
+            </form>
+        </section>
+
+    </main>
+
+    <aside>
+        <h2>Дополнительная информация обо мне:</h2>
+        <p>Любимый инструмент: гитара</p>
+        <p>Любимые жанры: пауэр-метал, блэк-метал, ню-метал, металкор, рок</p>
+        <img src="images/lb1.jpg" alt="Фото любимой метал-группы" class="band-photo">
+    </aside>
+
+    <footer>
+        <p>&copy; 2026 Теребинов Никита. Все права защищены.</p>
+        <p><a href="https://github.com/Trebo14">Мой GitHub</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
