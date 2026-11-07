@@ -84,7 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.classList.toggle("light-theme");
         if (document.body.classList.contains("light-theme")) {
             localStorage.setItem("theme", "light");
-        } else {
+        } 
+        else {
             localStorage.setItem("theme", "dark");
         }
     });
@@ -92,4 +93,89 @@ document.addEventListener("DOMContentLoaded", () => {
     hideBtn.addEventListener("click", () => {
         playlistSection.classList.toggle("hidden");
     });
+
+    const trackForm = document.getElementById("track-form");
+    const trackNameInput = document.getElementById("track-name");
+    const trackDurationInput = document.getElementById("track-duration");
+    const playlistContainer = document.getElementById("playlist-container");
+    const clearBtn = document.getElementById("clear-btn");
+
+    if (!trackForm || !trackNameInput || !trackDurationInput || !playlistContainer || !clearBtn) {
+        console.error("Ошибка: Не найдены элементы формы или контейнера плейлиста!");
+        return;
+    }
+
+    let playlistData = [];
+    const savedPlaylist = localStorage.getItem("playlist");
+
+    if (savedPlaylist) {
+        try {
+            playlistData = JSON.parse(savedPlaylist);
+        } 
+        catch (error) {
+            console.error("Ошибка чтения данных плейлиста:", error);
+            playlistData = [];
+        }
+    }
+
+    function savePlaylistToStorage() {
+        localStorage.setItem("playlist", JSON.stringify(playlistData));
+    }
+
+    function renderPlaylist() {
+        playlistContainer.innerHTML = "";
+        playlistData.forEach((track) => {
+            const li = document.createElement("li");
+            li.className = "track-item";
+            const span = document.createElement("span");
+            span.textContent = `${track.name} — ${track.duration}`;
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.checked = track.favorite;
+            checkbox.addEventListener("change", () => {
+                track.favorite = checkbox.checked;
+                savePlaylistToStorage();
+            });
+            const deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "Удалить";
+            deleteBtn.addEventListener("click", () => {
+                playlistData = playlistData.filter(t => t !== track); 
+                savePlaylistToStorage();
+                renderPlaylist();
+            });
+            li.appendChild(span);
+            li.appendChild(checkbox);
+            li.appendChild(deleteBtn);
+            playlistContainer.appendChild(li);
+        });
+    }
+
+    trackForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const name = trackNameInput.value.trim();
+        const duration = trackDurationInput.value.trim();
+        if (name === "" || duration === "") {
+            alert("Пожалуйста, заполните название и длительность!");
+            return;
+        }
+        playlistData.push({
+            name: name,
+            duration: duration,
+            favorite: false
+        });
+
+        savePlaylistToStorage();
+        renderPlaylist();
+        trackForm.reset();
+    });
+
+    clearBtn.addEventListener("click", () => {
+        if (confirm("Вы уверены, что хотите удалить все треки?")) {
+            playlistData = [];
+            savePlaylistToStorage();
+            renderPlaylist();
+        }
+    });
+
+    renderPlaylist();
 });
