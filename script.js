@@ -90,8 +90,20 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    const isPlaylistHidden = localStorage.getItem("playlistHidden");
+
+    if (isPlaylistHidden === "true") {
+        playlistSection.classList.add("hidden");
+    }
+
     hideBtn.addEventListener("click", () => {
         playlistSection.classList.toggle("hidden");
+        if (playlistSection.classList.contains("hidden")) {
+            localStorage.setItem("playlistHidden", "true");
+        } 
+        else {
+            localStorage.setItem("playlistHidden", "false");
+        }
     });
 
     const trackForm = document.getElementById("track-form");
