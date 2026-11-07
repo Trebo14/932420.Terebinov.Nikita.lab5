@@ -372,3 +372,47 @@ img {
         grid-template-columns: 1fr;
     }
 }
+
+/* НОВЫЙ КОД: Светлая тема */
+body.light-theme {
+    --main-color: #f4f4f9;
+    --text-color: #222222;
+    --card-bg: #ffffff;
+    --accent-color: #6a1b9a;
+    --accent-tr-20: #6a1b9a33;
+    --accent-tr-15: #6a1b9a26;
+    --visited: #4a148c;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.track-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--accent-color);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+}
+
+.track-item span {
+    flex-grow: 1;
+    font-size: 1.1rem;
+}
+
+.track-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.track-item button {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+}
