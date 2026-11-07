@@ -75,7 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const savedTheme = localStorage.getItem("theme");
-        if (savedTheme === "light") {
+
+    if (savedTheme === "light") {
         document.body.classList.add("light-theme");
     }
 
